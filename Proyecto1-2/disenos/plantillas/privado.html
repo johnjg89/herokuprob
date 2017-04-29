@@ -1,0 +1,38 @@
+{% extends 'bas.html' %}
+{% block titulo %}Bienvenido{% endblock %}
+{% block encabezado %}
+	
+{% endblock %}
+{% block contenido %}
+	<h1>Bienvenido</h1>
+	<p>
+		
+	<a href="{% url 'proyecto_nuevo' %}">Agregar un Proyecto</a>
+
+
+	</p>
+	<p> Tus proyectos</p>
+
+	{% for dato in usuarios %}
+	
+	
+		<ul>{% if dato.username == usuario.username %}
+			{% for item in proyectos %}
+				{% if item.usuario == dato %}
+					<li>{{item}}</li>
+				{% endif %}
+			{% empty %}
+				<li>Este usuario aún no ha registrado Proyectos.</li>
+			{% endfor %}
+			{% endif %}
+		</ul>
+	
+	{% empty %}
+	<li>No hay Clientes registrados, aún.</li>
+	{% endfor %}
+
+
+	<p>Bievenido {{usuario.username|upper}},
+		la última vez que te vimos por aquí fue el {{usuario.last_login}}.</p>
+	<p>Eres miembro desde el {{usuario.date_joined}}</p>
+{% endblock %}

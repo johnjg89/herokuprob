@@ -1,0 +1,35 @@
+{% extends 'bas.html' %}
+{% block titulo %} Nuestros Clientes {% endblock %}
+
+{% block encabezado %}
+  <h1>Colaboradores</h1>
+{% endblock %}
+
+
+{% block contenido %}
+<h1>Nuestros Clientes </h1>
+<ul>
+	{% for dato in usuarios %}
+	<li>{{dato.username|capfirst}} - <em>{{dato.email}}</em>
+	
+		<a href='{% url "detalle_usuario" dato.id%}'>{{dato.username}}</a>
+	
+	
+		<ul>
+			{% for item in proyectos %}
+				{% if item.usuario == dato %}
+					<li>{{item}}
+					<a href='{% url "detalle_proyecto" dato.id%}'>{{dato.diseno_id}}</a>
+					</li>
+
+				{% endif %}
+			{% empty %}
+				<li>Este usuario aún no ha registrado Proyectos.</li>
+			{% endfor %}
+		</ul>
+	</li>
+	{% empty %}
+	<li>No hay Clientes registrados, aún.</li>
+	{% endfor %}
+</ul>
+{% endblock %}

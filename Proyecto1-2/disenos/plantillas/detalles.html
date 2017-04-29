@@ -1,0 +1,48 @@
+{% extends 'bas.html' %}
+
+
+
+
+{% block contenido %}
+	 <h1>{{receta.titulo|title}}</h1>
+	 <p>Registrado {{ receta.tiempo_registro|date:'SHORT_DATETIME_FORMAT' }} por {{receta.usuario}}</p>
+	<div id='descripcion'>
+		<h2>Requerimientos</h2>
+		<p>{{receta.descripcion}}</p>
+	</div>
+	<div id='presupuesto'>
+		<h2>Presupuesto</h2>
+		<p>{{receta.presupuesto}}</p>
+	</div>
+	<hr size=2 >
+	<div id='comentarios'>
+		<h2>Diseños</h2>
+			{% for item in comentarios %}
+				<p>{{item.texto}}</p>
+				<p>Diseñado por: {{item.nombre}}</p>
+				<p>Costo: {{item.costo}}</p>
+				<p>Subido {{ item.fecha_registro|date:'SHORT_DATETIME_FORMAT' }}</p>
+				
+				{% if item.estado == 'En proceso' %}
+					<p>Diseño sin procesar</p>
+				{% endif %} 
+
+				{% if item.estado == 'Disponible' %}					
+					<img src='{{MEDIA_URL}}{{item.imagen}}'>
+				 	
+				{% endif %} 
+				<hr color="blue" size=2 >	
+			{% empty %}
+				<p>Sin <data></data>diseños registrados</p>
+			
+			{% endfor %}
+
+	</div>
+	
+
+
+
+	<footer>
+	  
+	</footer>
+{% endblock %}

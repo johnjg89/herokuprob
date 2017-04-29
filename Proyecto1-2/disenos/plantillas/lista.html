@@ -1,0 +1,30 @@
+{% extends 'bas.html' %}
+{% block titulo %} Recetas registradas {% endblock %}
+
+{% block css %}
+  <style>
+	img { width:100px; }
+  </style>
+{% endblock %}
+
+
+{% block encabezado %}
+  <h1>Proyectos</h1>
+{% endblock %}
+
+{% block contenido %}
+<h1>Proyectos</h1>
+<style>
+	img { width:100px; }
+  </style>
+
+<ul>
+	{% for dato in datos %}
+	<li>
+		<a href='{% url "detalle_proyecto" dato.id%}'>{{dato.titulo}}</a>
+	</li>
+	{% empty %}
+	<li>Aún no hay Proyectos registrados</li>
+	{% endfor %}
+</ul>
+{% endblock %}

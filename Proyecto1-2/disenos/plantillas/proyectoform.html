@@ -1,0 +1,15 @@
+{% extends 'bas.html' %}
+{% block titulo %}Nueva receta{% endblock %}
+{% block encabezado %}
+
+{% endblock %}
+{% block contenido %}
+	<h1>Ingresa un Nuevo Proyecto</h1>
+	<form id='formulario' method='post'  enctype='multipart/form-data' action=''>{% csrf_token %}
+		{{formulario.as_p}}
+		
+		<p><input type='submit' value='Registrar'/></p>
+	
+
+	</form>
+{% endblock %}

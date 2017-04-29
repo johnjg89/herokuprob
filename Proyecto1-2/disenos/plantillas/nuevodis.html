@@ -1,0 +1,16 @@
+{% extends 'bas.html' %}
+CSRF_COOKIE_SECURE = True
+{% block titulo %}Nuevo Comentario{% endblock %}
+{% block encabezado %}
+	<h1>Dejanos tus comentarios</h1>
+{% endblock %}
+{% block contenido %}
+	<h1>Sube tus Diseño</h1>
+	<p> </p>
+	<form id='formulario' method='post' enctype='multipart/form-data'  action=''>{% csrf_token %}
+	{{formulario.as_p}}
+	<p><input type='submit' value='Confirmar'/></p>
+	</form>
+
+
+{% endblock %}

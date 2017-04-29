@@ -1,0 +1,10 @@
+{% extends 'bas.html' %}
+	
+
+{% block contenido %}
+ 	<h1 class="page-header">Login</h1>
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		<table>{{formulario}}</table>
+		<p><input type='submit' value='Login'/></p>
+	</form>
+{% endblock %}
